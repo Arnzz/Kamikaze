@@ -8,40 +8,71 @@
 </head>
 <body>
     <div class="container">
-        <form class="form" action="submit.php" method="post">
+        <form class="form" id="registrationForm">
             <p class="title">Register</p>
             <p class="message">Kamikaze神風 by Arasaka. </p>
 
             <div class="flex">
                 <label>
-                    <input class="input" type="text" name="firstName" placeholder="" required="">
+                    <input class="input" type="text" id="firstName" placeholder="" required>
                     <span>First Name</span>
                 </label>
         
                 <label>
-                    <input class="input" type="text" name="lastName" placeholder="" required="">
+                    <input class="input" type="text" id="lastName" placeholder="" required>
                     <span>Last Name</span>
                 </label>
             </div>  
                     
             <label>
-                <input class="input" type="email" name="email" placeholder="" required="">
+                <input class="input" type="email" id="email" placeholder="" required>
                 <span>Email</span>
             </label> 
                 
             <label>
-                <input class="input" type="password" name="password" placeholder="" required="">
+                <input class="input" type="password" id="password" placeholder="" required>
                 <span>Password</span>
             </label>
 
             <label>
-                <input class="input" type="password" name="confirmPassword" placeholder="" required="">
+                <input class="input" type="password" id="confirmPassword" placeholder="" required>
                 <span>Confirm password</span>
             </label>
 
-            <button class="submit" type="submit">Submit</button>
+            <button class="submit" type="button" onclick="saveToFile()">Submit</button>
             <p class="signin">Already have an account? <a href="log.html">Sign in</a></p>
         </form>
     </div>
+
+    <script>
+        function saveToFile() {
+            // Get form data
+            var firstName = document.getElementById('firstName').value;
+            var lastName = document.getElementById('lastName').value;
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirmPassword').value;
+
+            // Create a data string
+            var dataString = `First Name: ${firstName}\nLast Name: ${lastName}\nEmail: ${email}\nPassword: ${password}\nConfirm Password: ${confirmPassword}`;
+
+            // Create a Blob with the data
+            var blob = new Blob([dataString], { type: 'text/plain' });
+
+            // Create a download link
+            var downloadLink = document.createElement('a');
+            downloadLink.href = URL.createObjectURL(blob);
+            downloadLink.download = 'form_data.txt';
+
+            // Append the link to the body
+            document.body.appendChild(downloadLink);
+
+            // Trigger a click on the link to start the download
+            downloadLink.click();
+
+            // Remove the link from the body
+            document.body.removeChild(downloadLink);
+        }
+    </script>
 </body>
 </html>
