@@ -8,43 +8,40 @@
 </head>
 <body>
     <div class="container">
-        <form class="form">
+        <form class="form" action="submit.php" method="post">
             <p class="title">Register</p>
             <p class="message">Kamikaze神風 by Arasaka. </p>
 
             <div class="flex">
                 <label>
-                    <input class="input" type="text" placeholder="" required="">
+                    <input class="input" type="text" name="firstName" placeholder="" required="">
                     <span>First Name</span>
                 </label>
         
                 <label>
-                    <input class="input" type="text" placeholder="" required="">
+                    <input class="input" type="text" name="lastName" placeholder="" required="">
                     <span>Last Name</span>
                 </label>
             </div>  
                     
             <label>
-                <input class="input" type="email" placeholder="" required="">
+                <input class="input" type="email" name="email" placeholder="" required="">
                 <span>Email</span>
             </label> 
                 
             <label>
-                <input class="input" type="password" placeholder="" required="">
+                <input class="input" type="password" name="password" placeholder="" required="">
                 <span>Password</span>
             </label>
 
             <label>
-                <input class="input" type="password" placeholder="" required="">
+                <input class="input" type="password" name="confirmPassword" placeholder="" required="">
                 <span>Confirm password</span>
             </label>
 
-            <button class="submit">Submit</button>
-            <p class="signin">Already have an acount ? <a href="log.html">Sign in</a> </p>
+            <button class="submit" type="submit">Submit</button>
+            <p class="signin">Already have an account? <a href="log.html">Sign in</a></p>
         </form>
     </div>
-    <form class="form" action="submit.php" method="post">
-
-
 </body>
 </html>
